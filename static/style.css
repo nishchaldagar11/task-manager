@@ -1,0 +1,116 @@
+/* Background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+}
+
+/* Container Glass Effect */
+.container {
+    width: 85%;
+    margin: 40px auto;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+a, button {
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Add Button */
+a {
+    background: #00c6ff;
+    color: white;
+}
+
+a:hover {
+    background: #0096c7;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table Head */
+th {
+    padding: 12px;
+    background: rgba(255,255,255,0.2);
+}
+
+/* Table Data */
+td {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* FORM */
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+/* Submit Button */
+button {
+    background: #00ff9d;
+    color: black;
+}
+
+button:hover {
+    background: #00c97d;
+}
+
+/* 🔥 ACTION BUTTON FIX */
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Edit Button */
+.edit-btn {
+    background: #4facfe;
+}
+
+.edit-btn:hover {
+    background: #007bff;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: #ff6b6b;
+}
+
+.delete-btn:hover {
+    background: #ff3b3b;
+}
