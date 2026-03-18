@@ -1,5 +1,8 @@
 <h1 align="center">🚀 Task Management System</h1>
-<p align="center">A modern full-stack web application to manage your daily tasks — built with Flask, MySQL, and a clean Glass UI.</p>
+
+<p align="center">
+A modern full-stack web application to manage daily tasks efficiently — built with Flask & MySQL
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python&logoColor=white" />
@@ -11,186 +14,169 @@
 
 ---
 
-## 📌 Overview
+## 📌 Project Overview
 
-**Task Management System** is a full-stack web application that helps you organize and track your tasks efficiently. It supports creating, viewing, editing, deleting, and searching tasks — all with proper timestamp tracking and status management.
+Task Management System is a **Full Stack Web Application** designed to manage and track tasks efficiently.
+
+It allows users to perform full CRUD operations with proper tracking of task status, timestamps, and ownership.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Application Architecture
 
-This project follows the **MVC (Model-View-Controller)** pattern:
+This project follows **MVC Architecture**:
 
-| Layer | Technology |
-|-------|------------|
-| **Model** | MySQL Database |
-| **View** | HTML5 + CSS3 + Jinja2 Templates |
-| **Controller** | Flask Routes (`app.py`) |
+| Layer | Description |
+|------|------------|
+| Model | MySQL Database |
+| View | HTML + CSS + Jinja Templates |
+| Controller | Flask (app.py routes) |
+
+---
+
+## ⚙️ Development Approach
+
+This project follows a **Code-First Approach** using SQLAlchemy where database tables are generated from Python models.
+
+---
+
+## 🎨 Frontend Structure
+
+- Server-side rendered UI using Jinja2 templates
+- Styled using custom CSS (Glass UI Design)
+- Simple and responsive layout
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Backend**
-- Python 3.10
+### 🔹 Backend
+- Python
 - Flask
 
-**Frontend**
+### 🔹 Frontend
 - HTML5
 - CSS3
 - Jinja2 Templates
 
-**Database**
+### 🔹 Database
 - MySQL
 
-**Version Control**
+### 🔹 Version Control
 - Git & GitHub
 
 ---
 
 ## ✨ Features
 
-- ✅ Add new tasks
-- ✅ View all tasks
-- ✅ Edit existing tasks
-- ✅ Delete tasks
-- ✅ Search tasks by keyword
-- ✅ Due date tracking
-- ✅ Status management (Pending / Completed)
-- ✅ Auto timestamps for creation and updates
-- ✅ Track who created or last updated a task
+- ✅ Add Task
+- ✅ View Tasks
+- ✅ Edit Task
+- ✅ Delete Task
+- ✅ Search Task
+- ✅ Status Tracking
+- ✅ Due Date Management
+- ✅ Auto Timestamp (Created & Updated)
+- ✅ Created By & Updated By Tracking
 
 ---
 
 ## 📊 Task Attributes
 
 | Attribute | Description |
-|-----------|-------------|
-| `title` | Task name |
-| `description` | Detailed description of the task |
-| `due_date` | Deadline for the task |
-| `status` | Current status — Pending or Completed |
-| `remarks` | Any additional notes |
-| `created_on` | Timestamp of creation |
-| `updated_on` | Timestamp of last update |
-| `created_by` | Name of the user who created the task |
-| `updated_by` | Name of the user who last modified the task |
+|-----------|------------|
+| title | Task name |
+| description | Task details |
+| due_date | Deadline |
+| status | Pending / Completed |
+| remarks | Notes |
+| created_on | Creation timestamp |
+| updated_on | Last updated timestamp |
+| created_by | Creator name |
+| updated_by | Last updater name |
 
 ---
 
-## 🗄️ Database Schema
+## 🗄️ Database Design
 
-### `tasks` Table
+### 📌 ER Diagram
+
+> Upload your ER diagram image in repo and link below
+
+![ER Diagram](./er-diagram.png)
+
+---
+
+## 📖 Data Dictionary
+
+### Tasks Table
 
 | Column | Data Type | Description |
-|--------|-----------|-------------|
-| `id` | INT (PK, AUTO_INCREMENT) | Unique task identifier |
-| `title` | VARCHAR(255) | Task title |
-| `description` | VARCHAR(500) | Task description |
-| `due_date` | DATE | Task deadline |
-| `status` | VARCHAR(50) | Task status |
-| `remarks` | VARCHAR(255) | Additional notes |
-| `created_on` | DATETIME | Creation timestamp |
-| `updated_on` | DATETIME | Last update timestamp |
-| `created_by` | VARCHAR(100) | Creator name |
-| `updated_by` | VARCHAR(100) | Last modifier name |
+|--------|----------|------------|
+| id | INT (PK) | Unique Task ID |
+| title | VARCHAR(255) | Task Title |
+| description | TEXT | Task Description |
+| due_date | DATE | Deadline |
+| status | VARCHAR(50) | Task Status |
+| remarks | TEXT | Notes |
+| created_on | DATETIME | Created Time |
+| updated_on | DATETIME | Updated Time |
+| created_by | VARCHAR(100) | Creator |
+| updated_by | VARCHAR(100) | Last Updater |
+
+---
+
+## ⚡ Index Documentation
+
+- Primary Key indexing on `id`
+- Search optimized on `title`
+- Efficient filtering on `status`
 
 ---
 
 ## 📁 Project Structure
 
-```
-task-manager/
-│
-├── app.py                  # Main Flask application & routes
-├── models.py               # Database models
-├── extensions.py           # Flask extensions (e.g. SQLAlchemy)
-├── requirements.txt        # Python dependencies
-│
-├── templates/
-│   ├── index.html          # Task list view
-│   ├── add.html            # Add task form
-│   └── edit.html           # Edit task form
-│
-├── static/
-│   └── style.css           # Application styles
-│
-└── README.md
-```
+task-manager/ │ ├── app.py ├── models.py ├── extensions.py ├── requirements.txt ├── README.md ├── er-diagram.png │ ├── templates/ │   ├── index.html │   ├── add.html │   └── edit.html │ ├── static/ │   └── style.css
 
 ---
 
-## ⚙️ Installation & Setup
+## 🔧 Installation & Setup
 
-### 1. Clone the repository
+### 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/your-username/task-manager.git
 cd task-manager
-```
 
-### 2. Install dependencies
-
-```bash
+2️⃣ Install Dependencies
 pip install -r requirements.txt
-```
 
-### 3. Set up the database
-
-Log into MySQL and run:
-
-```sql
+3️⃣ Setup Database
 CREATE DATABASE taskdb;
-```
+Update DB credentials in app.py:
+mysql+mysqlconnector://username:password@localhost/taskdb
 
-Then update your database connection settings in `extensions.py` or wherever your config lives:
-
-```python
-SQLALCHEMY_DATABASE_URI = "mysql+pymysql://username:password@localhost/taskdb"
-```
-
-### 4. Run the application
-
-```bash
+4️⃣ Run Application
 python app.py
-```
 
-### 5. Open in browser
-
-```
+🌐 Open Browser
 http://127.0.0.1:5000
-```
 
----
+🔄 CRUD Operations
+Operation	Endpoint	Method
+Create	/add	POST
+Read	/	GET
+Update	/edit/<id>	POST
+Delete	/delete/<id>	GET
+Search	/search	POST
 
-## 🔗 API Endpoints
-
-| Operation | Endpoint | Method |
-|-----------|----------|--------|
-| View all tasks | `/` | GET |
-| Add a task | `/add` | POST |
-| Edit a task | `/edit/<id>` | POST |
-| Delete a task | `/delete/<id>` | GET |
-| Search tasks | `/search` | POST |
-
----
-
-## 🎨 UI Highlights
-
-- Glass-morphism design aesthetic
-- Clean, minimal layout
-- Responsive across screen sizes
-- Interactive buttons with smooth feedback
-
----
-
-## 👨‍💻 Developer
-
-**Nishchal Dagar**  
-B.Tech CSE — Data Science
-
----
-
-## ⭐ Support
-
-If you found this project helpful, consider giving it a star on GitHub — it helps a lot!
+🎨 UI Features
+Glassmorphism UI
+Clean layout
+Responsive design
+Simple navigation
+👨‍💻 Developer
+Nishchal Dagar
+B.Tech CSE (Data Science)
+⭐ Support
+If you found this project useful, give it a ⭐ on GitHub!
