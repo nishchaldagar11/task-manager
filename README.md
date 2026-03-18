@@ -1,7 +1,7 @@
 <h1 align="center">🚀 Task Management System</h1>
 
 <p align="center">
-A modern full-stack web application to manage daily tasks efficiently — built with Flask & MySQL
+  A modern full-stack web application to manage daily tasks efficiently — built with Flask & MySQL
 </p>
 
 <p align="center">
@@ -10,173 +10,238 @@ A modern full-stack web application to manage daily tasks efficiently — built 
   <img src="https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/HTML5-Frontend-red?style=for-the-badge&logo=html5&logoColor=white" />
   <img src="https://img.shields.io/badge/CSS3-Design-blue?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/MVC-Architecture-success?style=for-the-badge" />
 </p>
 
 ---
 
 ## 📌 Project Overview
 
-Task Management System is a **Full Stack Web Application** designed to manage and track tasks efficiently.
+**Task Management System** is a full-stack web application designed to manage and track tasks efficiently.
 
-It allows users to perform full CRUD operations with proper tracking of task status, timestamps, and ownership.
+It supports **multi-user authentication**, **role-based access control**, and a complete **task lifecycle** — including creation, editing, deletion, search, and status tracking.
 
 ---
 
 ## 🏗️ Application Architecture
 
-This project follows **MVC Architecture**:
+This project follows the **MVC (Model-View-Controller)** pattern:
 
-| Layer | Description |
-|------|------------|
-| Model | MySQL Database |
-| View | HTML + CSS + Jinja Templates |
-| Controller | Flask (app.py routes) |
+| Layer | Technology |
+|-------|------------|
+| **Model** | MySQL Database via SQLAlchemy ORM |
+| **View** | HTML5 + CSS3 + Jinja2 Templates |
+| **Controller** | Flask Routes (`app.py`) |
 
----
-
-## ⚙️ Development Approach
-
-This project follows a **Code-First Approach** using SQLAlchemy where database tables are generated from Python models.
-
----
-
-## 🎨 Frontend Structure
-
-- Server-side rendered UI using Jinja2 templates
-- Styled using custom CSS (Glass UI Design)
-- Simple and responsive layout
+> **Development Approach:** Code-First using SQLAlchemy — database tables are auto-generated from Python models.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### 🔹 Backend
-- Python
-- Flask
-
-### 🔹 Frontend
-- HTML5
-- CSS3
-- Jinja2 Templates
-
-### 🔹 Database
-- MySQL
-
-### 🔹 Version Control
-- Git & GitHub
+| Layer | Tools |
+|-------|-------|
+| **Backend** | Python 3.10, Flask, Flask-SQLAlchemy |
+| **Frontend** | HTML5, CSS3, Jinja2 |
+| **Database** | MySQL |
+| **Auth** | Session-based, Werkzeug Password Hashing |
+| **Version Control** | Git & GitHub |
 
 ---
 
 ## ✨ Features
 
-- ✅ Add Task
-- ✅ View Tasks
-- ✅ Edit Task
-- ✅ Delete Task
-- ✅ Search Task
-- ✅ Status Tracking
-- ✅ Due Date Management
-- ✅ Auto Timestamp (Created & Updated)
-- ✅ Created By & Updated By Tracking
+### 👤 User Features
+- ✅ Register & Login
+- ✅ Secure password hashing (Werkzeug)
+- ✅ Create, View, Edit, Delete tasks
+- ✅ Search tasks
+- ✅ Status tracking (Pending / Completed)
+- ✅ Due date management
+- ✅ Auto timestamps on creation & update
+- ✅ Created By & Updated By tracking
+
+### 👑 Admin Features
+- ✅ View & manage all users
+- ✅ Edit & delete any user
+- ✅ View & manage all tasks
+- ✅ Edit & delete any task
+- ✅ Role-based access control (Admin / User)
 
 ---
 
 ## 📊 Task Attributes
 
 | Attribute | Description |
-|-----------|------------|
-| title | Task name |
-| description | Task details |
-| due_date | Deadline |
-| status | Pending / Completed |
-| remarks | Notes |
-| created_on | Creation timestamp |
-| updated_on | Last updated timestamp |
-| created_by | Creator name |
-| updated_by | Last updater name |
+|-----------|-------------|
+| `title` | Task name |
+| `description` | Task details |
+| `due_date` | Deadline |
+| `status` | Pending / Completed |
+| `remarks` | Additional notes |
+| `created_on` | Creation timestamp |
+| `updated_on` | Last updated timestamp |
+| `created_by` | Creator user ID (FK) |
+| `updated_by` | Last updater user ID (FK) |
 
 ---
 
 ## 🗄️ Database Design
 
-### 📌 ER Diagram
+### ER Diagram
 
-> Upload your ER diagram image in repo and link below
+The system uses a relational design where one user can create multiple tasks, linked via foreign keys.
 
 ![ER Diagram](./er-diagram.png)
 
----
+### Data Dictionary
 
-## 📖 Data Dictionary
-
-### Tasks Table
+#### `users` Table
 
 | Column | Data Type | Description |
-|--------|----------|------------|
-| id | INT (PK) | Unique Task ID |
-| title | VARCHAR(255) | Task Title |
-| description | TEXT | Task Description |
-| due_date | DATE | Deadline |
-| status | VARCHAR(50) | Task Status |
-| remarks | TEXT | Notes |
-| created_on | DATETIME | Created Time |
-| updated_on | DATETIME | Updated Time |
-| created_by | VARCHAR(100) | Creator |
-| updated_by | VARCHAR(100) | Last Updater |
+|--------|-----------|-------------|
+| `id` | INT (PK, AUTO_INCREMENT) | Unique user identifier |
+| `name` | VARCHAR(100) | Full name |
+| `email` | VARCHAR(100) | Email address |
+| `password` | VARCHAR(255) | Hashed password |
+| `role` | VARCHAR(20) | Role — Admin or User |
+
+#### `tasks` Table
+
+| Column | Data Type | Description |
+|--------|-----------|-------------|
+| `id` | INT (PK, AUTO_INCREMENT) | Unique task identifier |
+| `title` | VARCHAR(255) | Task title |
+| `description` | TEXT | Task description |
+| `due_date` | DATE | Task deadline |
+| `status` | VARCHAR(50) | Task status |
+| `remarks` | TEXT | Additional notes |
+| `created_on` | DATETIME | Creation timestamp |
+| `updated_on` | DATETIME | Last update timestamp |
+| `created_by` | INT (FK → users.id) | Creator reference |
+| `updated_by` | INT (FK → users.id) | Last modifier reference |
+
+### Index Documentation
+
+| Index | Column(s) | Purpose |
+|-------|-----------|---------|
+| Primary Key | `id` | Unique row identification |
+| Foreign Key | `created_by`, `updated_by` | User relationship lookups |
+| Search Index | `title`, `status` | Optimized filtering & search |
 
 ---
 
-## ⚡ Index Documentation
+## 🔐 Authentication & Security
 
-- Primary Key indexing on `id`
-- Search optimized on `title`
-- Efficient filtering on `status`
+- Session-based authentication with Flask
+- Password hashing via Werkzeug
+- Protected routes — unauthenticated users redirected to login
+- Role-based authorization: Admin sees all data, Users see only their own
 
 ---
 
 ## 📁 Project Structure
 
-task-manager/ │ ├── app.py ├── models.py ├── extensions.py ├── requirements.txt ├── README.md ├── er-diagram.png │ ├── templates/ │   ├── index.html │   ├── add.html │   └── edit.html │ ├── static/ │   └── style.css
+```
+task-manager/
+│
+├── app.py                  # Flask app & route definitions
+├── models.py               # SQLAlchemy models (User, Task)
+├── extensions.py           # Flask extensions (DB, login manager)
+├── requirements.txt        # Python dependencies
+├── er-diagram.png          # ER diagram image
+├── README.md
+│
+├── templates/
+│   ├── index.html          # Task list (user view)
+│   ├── add.html            # Add task form
+│   ├── edit.html           # Edit task form
+│   ├── login.html          # Login page
+│   ├── register.html       # Registration page
+│   ├── admin.html          # Admin dashboard
+│   └── edit_user.html      # Edit user form (admin)
+│
+└── static/
+    └── style.css           # Global styles (Glass UI)
+```
 
 ---
 
-## 🔧 Installation & Setup
+## ⚙️ Installation & Setup
 
-### 1️⃣ Clone Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/task-manager.git
 cd task-manager
+```
 
-2️⃣ Install Dependencies
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Setup Database
+### 3. Set up the database
+
+Run this in your MySQL client:
+
+```sql
 CREATE DATABASE taskdb;
-Update DB credentials in app.py:
-mysql+mysqlconnector://username:password@localhost/taskdb
+```
 
-4️⃣ Run Application
+Then update your connection string in `app.py` or `extensions.py`:
+
+```python
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://username:password@localhost/taskdb"
+```
+
+### 4. Run the application
+
+```bash
 python app.py
+```
 
-🌐 Open Browser
+### 5. Open in your browser
+
+```
 http://127.0.0.1:5000
+```
 
-🔄 CRUD Operations
-Operation	Endpoint	Method
-Create	/add	POST
-Read	/	GET
-Update	/edit/<id>	POST
-Delete	/delete/<id>	GET
-Search	/search	POST
+---
 
-🎨 UI Features
-Glassmorphism UI
-Clean layout
-Responsive design
-Simple navigation
-👨‍💻 Developer
-Nishchal Dagar
-B.Tech CSE (Data Science)
-⭐ Support
-If you found this project useful, give it a ⭐ on GitHub!
+## 🔄 API Endpoints
+
+| Operation | Endpoint | Method | Access |
+|-----------|----------|--------|--------|
+| View all tasks | `/` | GET | User |
+| Add a task | `/add` | POST | User |
+| Edit a task | `/edit/<id>` | POST | User / Admin |
+| Delete a task | `/delete/<id>` | GET | User / Admin |
+| Search tasks | `/search` | POST | User |
+| Admin dashboard | `/admin` | GET | Admin only |
+| Edit a user | `/edit_user/<id>` | POST | Admin only |
+| Delete a user | `/delete_user/<id>` | GET | Admin only |
+
+---
+
+## 🎨 UI Highlights
+
+- Glassmorphism design aesthetic
+- Clean dashboard layout
+- Responsive tables and forms
+- Action buttons with smooth interaction
+
+---
+
+## 👨‍💻 Developer Credits
+
+### 🚀 Project Lead & Developer
+
+**Nishchal Dagar**    
+- 📧 Email: nishchal083@gmail.com
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a **star** on GitHub — it means a lot!
