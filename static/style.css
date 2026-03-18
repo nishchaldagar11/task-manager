@@ -90,11 +90,37 @@ button:hover {
     background: #00c97d;
 }
 
-/* 🔥 ACTION BUTTON FIX */
+/* ACTION BUTTON FIX */
+td a {
+    display: inline-block;
+    margin: 4px;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+/* ACTION COLUMN FIX */
+td {
+    vertical-align: middle;
+}
+
+/* BUTTON CONTAINER */
 .actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
     justify-content: center;
+}
+
+.actions a {
+    text-decoration: none;
+    color: white;
+    background: rgba(0, 123, 255, 0.8);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.actions a:hover {
+    background: rgba(0, 86, 179, 0.9);
 }
 
 /* Edit Button */
