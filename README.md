@@ -173,7 +173,7 @@ task-manager/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/task-manager.git
+git clone https://github.com/nishchaldagar11/task-manager.git
 cd task-manager
 ```
 
